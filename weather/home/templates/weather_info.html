@@ -1,0 +1,44 @@
+<!-- weather_info.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Information</title>
+</head>
+<body>
+    <header>
+        <h1>Weather Information</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Weather Information for {{ data.city }}</h2>
+            {% if data %}
+                <p>Weather: {{ data.weather }}</p>
+                <p>Temperature: {{ data.temperature }} °C</p>
+                <p>Pressure: {{ data.pressure }} hPa</p>
+                <p>Humidity: {{ data.humidity }}%</p>
+            {% endif %}
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Get Weather</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact: your contact information here</p>
+    </footer>
+</body>
+</html>

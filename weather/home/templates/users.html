@@ -1,0 +1,29 @@
+<!-- users.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Submissions</title>
+</head>
+<body>
+    <h1>User Submissions</h1>
+
+    <ul>
+        {% for submission in submissions %}
+            <li>
+                <strong>Name:</strong> {{ submission.name }}<br>
+                <strong>Email:</strong> {{ submission.email }}<br>
+                <strong>City:</strong> {{ submission.city }}<br>
+                <strong>Weather:</strong> {{ submission.weather }}<br>
+                <strong>Temperature:</strong> {{ submission.temperature }} °C<br>
+                <strong>Pressure:</strong> {{ submission.pressure }} hPa<br>
+                <strong>Humidity:</strong> {{ submission.humidity }}%<br>
+                <strong>Submitted:</strong> {{ submission.timestamp }}<br>
+            </li>
+        {% empty %}
+            <li>No submissions yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
